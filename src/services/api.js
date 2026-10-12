@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api';
+let envBaseUrl = import.meta.env.VITE_API_BASE_URL || 'https://tt-backend-alfi.onrender.com/api';
+if (envBaseUrl.includes('your-new-render-url') || !envBaseUrl.startsWith('http')) {
+  envBaseUrl = 'https://tt-backend-alfi.onrender.com/api';
+}
+const API_BASE_URL = envBaseUrl;
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
